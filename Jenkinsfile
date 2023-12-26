@@ -1,8 +1,8 @@
 pipeline {
     agent none
     tools{
-        maven 'mvn'
-        jdk 'myjava'
+        maven 'Apache Maven 3.0.5 (Red Hat 3.0.5-17)'
+        jdk 'JAVA_HOME'
     }
 
     parameters{
