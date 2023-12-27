@@ -6,7 +6,7 @@ pipeline {
         booleanParam(name: 'executeTest', defaultValue: true, description: 'decide to run tc')
         choice(name: 'APPVERSION', choices: ['1.1', '1.2', '1.3'], description: 'Pick app version')
     }
-    set +x    
+   
     environment {
         BUILD_SERVER = 'ec2-user@54.152.20.147'
     }
@@ -17,6 +17,7 @@ pipeline {
                 script {
                     sshagent(['build-server']) {
                         echo "Compiling in ${params.ENV} environment"
+                        sh "set +x"
                         // sh 'mvn compile'
                         sh "scp -o StrictHostKeyChecking=no server-config.sh ${env.BUILD_SERVER}:/home/ec2-user"
                         sh "ssh -o StrictHostKeyChecking=no ${env.BUILD_SERVER} 'bash ~/server-config.sh'"
