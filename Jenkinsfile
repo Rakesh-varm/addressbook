@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    tools {
-        maven '$mymvn'
-        jdk '$JAVA_HOME'
-    }
 
     parameters {
         string(name: 'ENV', defaultValue: 'DEV', description: 'env to compile')
